@@ -14,10 +14,10 @@ func worker(ctx context.Context, id int, jobs <-chan int) {
 	for {
 		select {
 		case <-ctx.Done():
-			fmt.Printf("worker %d done\n", id)
+			fmt.Fprintf(os.Stdout, "worker %d done\n", id)
 			return
 		case job := <-jobs:
-			fmt.Printf("worker# %d print %d \n", id, job)
+			fmt.Fprintf(os.Stdout, "worker# %d print %d \n", id, job)
 		}
 	}
 
@@ -25,13 +25,13 @@ func worker(ctx context.Context, id int, jobs <-chan int) {
 
 func main() {
 	var countStr string
-	fmt.Println("Enter count of goroutines")
+	fmt.Fprintf(os.Stdout, "Enter count of goroutines")
 	fmt.Scan(&countStr)
-	fmt.Printf("Goroutines: %v\n", countStr)
+	fmt.Fprintf(os.Stdout, "Goroutines: %v\n", countStr)
 
 	count, err := strconv.Atoi(countStr)
 	if err != nil || count <= 0 {
-		fmt.Printf("Invalid count of goroutines\n")
+		fmt.Fprintf(os.Stdout, "Invalid count of goroutines\n")
 	}
 
 	jobs := make(chan int)

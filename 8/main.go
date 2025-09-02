@@ -22,7 +22,7 @@ func main() {
 		newNum = setBit(newNum, 1)
 		fmt.Printf("После установки i-го бита в 1: %d (%b)\n", newNum, newNum)
 
-		newNum = clearBit(newNum, 1)
+		newNum = clearBit(newNum, 2)
 		fmt.Printf("После установки i-го бита в 0: %d (%b)\n\n", newNum, newNum)
 
 	}

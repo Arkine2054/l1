@@ -1,20 +1,31 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
-func main() {
-	a := []int{1, 2, 3, 14, 52, 123, 132}
-	b := []int{2, 3, 4, 5, 12, 13, 14, 15, 123}
+func cross(a, b []int) []int {
+	m := make(map[int]bool)
+	var result []int
 
-	cross := []int{}
+	for _, val := range a {
+		m[val] = true
+	}
 
-	for _, vala := range a {
-		for _, valb := range b {
-			if vala == valb {
-				cross = append(cross, vala)
-			}
+	for _, val := range b {
+		if m[val] {
+			result = append(result, val)
+			m[val] = false
+
 		}
 	}
 
-	fmt.Printf("Пересечение a и b: %v", cross)
+	return result
+}
+
+func main() {
+	A := []int{1, 2, 3, 14, 52, 123, 132}
+	B := []int{2, 3, 4, 5, 12, 13, 14, 15, 123}
+
+	fmt.Println("Пересечение A и Б:", cross(A, B))
 }

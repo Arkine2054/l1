@@ -13,7 +13,6 @@ func main() {
 			if vala == valb {
 				cross = append(cross, vala)
 			}
-
 		}
 	}
 

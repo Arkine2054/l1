@@ -1,23 +1,21 @@
 package main
 
-import (
-	"fmt"
-)
+import "fmt"
 
 func main() {
-	a := []int{1, 2, 3}
-	b := []int{2, 3, 4}
+	a := []int{1, 2, 3, 14, 52, 123, 132}
+	b := []int{2, 3, 4, 5, 12, 13, 14, 15, 123}
 
-	cross := make(map[int][]int)
+	cross := []int{}
 
-	for _, c := range a {
-		key := c % 2
-		cross[key] = append(cross[key], c)
+	for _, vala := range a {
+		for _, valb := range b {
+			if vala == valb {
+				cross = append(cross, vala)
+			}
+
+		}
 	}
-	for _, c := range b {
-		key := c % 3
-		cross[key] = append(cross[key], c)
-	}
 
-	fmt.Printf("Пересечение a и b: %v", cross[0])
+	fmt.Printf("Пересечение a и b: %v", cross)
 }

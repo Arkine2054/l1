@@ -2,25 +2,20 @@ package main
 
 import (
 	"fmt"
-	"sync"
+	"sync/atomic"
 	"time"
 )
 
 type Counter struct {
-	mu    sync.Mutex
-	count int
+	count int64
 }
 
 func (c *Counter) Incrementation() {
-	c.mu.Lock()
-	c.count++
-	c.mu.Unlock()
+	atomic.AddInt64(&c.count, 1)
 }
 
-func (c *Counter) Value() int {
-	c.mu.Lock()
-	defer c.mu.Unlock()
-	return c.count
+func (c *Counter) Value() int64 {
+	return atomic.LoadInt64(&c.count)
 }
 
 func main() {

@@ -27,6 +27,6 @@ func main() {
 		}()
 	}
 
-	time.Sleep(time.Second)
+	time.Sleep(500 * time.Millisecond)
 	fmt.Println("Итоговое значение счетчика:", counter.Value())
 }

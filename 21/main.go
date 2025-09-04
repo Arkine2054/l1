@@ -5,27 +5,27 @@ import "fmt"
 type iPhone struct {
 }
 
-func (p iPhone) USB() string {
+func (p iPhone) lighting() string {
 	return fmt.Sprintf("Charging>>>")
 }
 
-type lighting interface {
+type USB interface {
 	canCharge() string
 }
 
-type usbAdapter struct {
+type lightingAdapter struct {
 	adapter *iPhone
 }
 
-func (a usbAdapter) canCharge() string {
-	return a.adapter.USB()
+func (a lightingAdapter) canCharge() string {
+	return a.adapter.lighting()
 }
 
 func main() {
 
 	cable := &iPhone{}
 
-	var adapter lighting = &usbAdapter{adapter: cable}
+	var adapter USB = &lightingAdapter{adapter: cable}
 
 	fmt.Printf("Your iPhone: %v", adapter.canCharge())
 }

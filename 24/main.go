@@ -22,8 +22,8 @@ func (p Point) Distance(other Point) float64 {
 
 func main() {
 
-	p1 := NewPoint(1.0, 2.0)
-	p2 := NewPoint(4.0, 6.0)
+	p1 := NewPoint(-4.0, 2.0)
+	p2 := NewPoint(7.0, -6.0)
 
 	c := p1.Distance(p2)
 

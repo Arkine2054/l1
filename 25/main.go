@@ -14,7 +14,7 @@ func Sleep(d time.Duration) {
 	}
 }
 func SleepAfter(d time.Duration) {
-	<-time.After(d) // ждём, пока канал "сработает"
+	<-time.After(d)
 }
 
 func main() {
